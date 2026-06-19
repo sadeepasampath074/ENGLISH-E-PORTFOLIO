@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Academic E-Portfolio — H.A.G.S Sampath</title>
+    <style>
+        /* Next-Gen Luxury Emerald Gold & Midnight Palette */
+        :root {
+            --gradient-body: linear-gradient(135deg, #020617 0%, #061626 50%, #022c22 100%);
+            --gradient-header: linear-gradient(90deg, #042f2e 0%, #0f172a 100%);
+            --gradient-cover: linear-gradient(145deg, #0f172a 0%, #022c22 100%);
+            --accent-emerald: #10b981;
+            --accent-mint: #34d399;
+            --accent-gold: #fbbf24;
+            --text-light: #f8fafc;
+            --text-dark: #0f172a;
+            --text-desc: #475569;
+            --radius-premium: 24px;
+            --shadow-ultimate: 0 40px 90px -15px rgba(0, 0, 0, 0.9), 0 20px 40px -20px rgba(0, 0, 0, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--gradient-body);
+            color: var(--text-dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 20px;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Dynamic Background Glows */
+        .glow-sphere-1 {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, transparent 75%);
+            top: 20%;
+            left: 15%;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .glow-sphere-2 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.08) 0%, transparent 70%);
+            bottom: 10%;
+            right: 10%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .book-wrapper {
+            width: 100%;
+            max-width: 1260px;
+            background: #ffffff;
+            border-radius: var(--radius-premium);
+            box-shadow: var(--shadow-ultimate);
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 3D Realism Center Spine Shadow */
+        .book-wrapper::before {
+            content: "";
+            position: absolute;
+            top: 85px;
+            bottom: 75px;
+            left: 45%;
+            width: 20px;
+            transform: translateX(-50%);
+            background: linear-gradient(to right, 
+                rgba(0,0,0,0) 0%, 
+                rgba(0,0,0,0.06) 25%, 
+                rgba(0,0,0,0.15) 50%, 
+                rgba(0,0,0,0.06) 75%, 
+                rgba(0,0,0,0) 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .book-header {
+            background: var(--gradient-header);
+            color: var(--text-light);
+            padding: 28px 40px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-emerald);
+            position: relative;
+        }
+
+        .book-header h1 {
+            font-size: 26px;
+            font-weight: 900;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #ffffff 0%, var(--accent-mint) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .book-header p {
+            font-size: 13.5px;
+            color: var(--accent-mint);
+            text-transform: uppercase;
+            letter-spacing: 3.5px;
+            margin-top: 8px;
+            font-weight: 700;
+        }
+
+        .book-pages-container {
+            display: grid;
+            grid-template-columns: 45% 55%;
+            min-height: 680px;
+            flex-grow: 1;
+            background: #ffffff;
+        }
+
+        /* Left Side Layout */
+        .left-page {
+            background: linear-gradient(180deg, #f8fafc 0%, #f0f4f8 100%);
+            padding: 45px;
+            border-right: 1px solid #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .left-page::after {
+            content: "";
+            position: absolute;
+            top: 0; right: 0; bottom: 0; width: 25px;
+            background: linear-gradient(to left, rgba(0,0,0,0.02), rgba(0,0,0,0));
+            pointer-events: none;
+        }
+
+        /* Luxury Front Page Cover Canvas */
+        .cover-jacket {
+            width: 100%;
+            max-width: 390px;
+            background: var(--gradient-cover);
+            color: #ffffff;
+            border-radius: 20px;
+            padding: 50px 35px;
+            box-shadow: 0 25px 50px -12px rgba(2, 44, 34, 0.5);
+            text-align: center;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-jacket::before {
+            content: '';
+            position: absolute;
+            top: -50px; right: -50px; width: 150px; height: 150px;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .cover-badge {
+            display: inline-block;
+            background: rgba(16, 185, 129, 0.15);
+            color: var(--accent-mint);
+            font-size: 11px;
+            font-weight: 800;
+            padding: 7px 18px;
+            border-radius: 30px;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.1);
+        }
+
+        .cover-jacket h2 {
+            font-size: 28px;
+            color: #ffffff;
+            font-weight: 900;
+            line-height: 1.35;
+            margin-bottom: 18px;
+            letter-spacing: 0.5px;
+            background: linear-gradient(to bottom, #ffffff 60%, var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-jacket h4 {
+            font-size: 13px;
+            color: #94a3b8;
+            font-weight: 600;
+            margin-bottom: 45px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .cover-university {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 28px;
+            font-size: 14px;
+            color: #cbd5e1;
+            line-height: 1.65;
+        }
+
+        .cover-university strong {
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 6px;
+            font-size: 15px;
+            letter-spacing: 0.8px;
+            font-weight: 700;
+        }
+
+        /* Photo Display Container */
+        .photo-card-holder {
+            width: 100%;
+            max-width: 420px;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            padding: 12px;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 25px;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .photo-card-holder:hover {
+            transform: translateY(-4px) scale(1.01);
+        }
+
+        .photo-img {
+            width: 100%;
+            height: auto;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .media-source-title {
+            margin-top: 12px;
+            font-size: 13px;
+            color: var(--text-desc);
+            font-style: italic;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Right Side Layout */
+        .right-page {
+            padding: 50px 60px;
+            overflow-y: auto;
+            max-height: 700px;
+            background: #ffffff;
+            position: relative;
+        }
+
+        .right-page::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; bottom: 0; width: 25px;
+            background: linear-gradient(to right, rgba(0,0,0,0.02), rgba(0,0,0,0));
+            pointer-events: none;
+        }
+
+        .right-page h2 {
+            font-size: 25px;
+            color: #0f172a;
+            margin-bottom: 8px;
+            font-weight: 800;
+            line-height: 1.35;
+        }
+
+        .page-meta-tags {
+            font-size: 12.5px;
+            color: #334155;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            background: linear-gradient(90deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid #cbd5e1;
+        }
+
+        .section-title {
+            font-size: 13.5px;
+            color: #042f2e;
+            margin: 30px 0 14px 0;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 4px solid var(--accent-emerald);
+            padding-left: 14px;
+        }
+
+        .page-text {
+            font-size: 15.5px;
+            line-height: 1.85;
+            color: #334155;
+            text-align: justify;
+            margin-bottom: 16px;
+        }
+
+        .bullet-list {
+            margin-left: 22px;
+            margin-bottom: 16px;
+        }
+
+        .bullet-list li {
+            font-size: 15.5px;
+            line-height: 1.75;
+            color: #334155;
+            margin-bottom: 10px;
+        }
+
+        /* Vocabulary Box */
+        .vocab-box {
+            background: linear-gradient(180deg, #fcfdff 0%, #f0fdf4 100%);
+            border: 1px solid #d1fae5;
+            border-left: 4px solid var(--accent-emerald);
+            padding: 22px;
+            margin-top: 25px;
+            border-radius: 14px;
+        }
+
+        .vocab-box p {
+            font-size: 15px;
+            line-height: 1.75;
+            margin-bottom: 12px;
+            color: #334155;
+        }
+
+        .vocab-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Table of Contents List */
+        .table-of-contents {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .table-of-contents li {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            border-radius: 12px;
+            margin-bottom: 8px;
+            transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 15px;
+            color: #334155;
+            font-weight: 600;
+            border: 1px solid transparent;
+        }
+
+        .table-of-contents li:hover {
+            background: linear-gradient(90deg, rgba(16, 185, 129, 0.08) 0%, rgba(251, 191, 36, 0.05) 100%);
+            color: #042f2e;
+            border-color: rgba(16, 185, 129, 0.15);
+            transform: translateX(8px);
+        }
+
+        .table-of-contents .page-num {
+            font-weight: 800;
+            color: var(--accent-emerald);
+            background: rgba(16, 185, 129, 0.1);
+            padding: 5px 14px;
+            border-radius: 30px;
+            font-size: 12px;
+            transition: all 0.28s ease;
+        }
+
+        .table-of-contents li:hover .page-num {
+            background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-gold) 100%);
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Footer Panels */
+        .book-footer {
+            background: #f8fafc;
+            padding: 22px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #0f172a 0%, #022c22 100%);
+            color: #ffffff;
+            border: none;
+            padding: 12px 26px;
+            font-weight: 700;
+            font-size: 13px;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-btn:hover {
+            background: linear-gradient(135deg, #022c22 0%, #020617 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(2, 44, 34, 0.3);
+        }
+
+        .home-btn {
+            background: #ffffff;
+            color: #475569;
+            border: 1px solid #cbd5e1;
+        }
+
+        .home-btn:hover {
+            background: #f1f5f9;
+            color: #0f172a;
+        }
+
+        #pageTurnerText {
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        /* Page Flip Animation */
+        .fade-page {
+            animation: cinematicFlip 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes cinematicFlip {
+            0% { opacity: 0.3; transform: scale(0.98) rotateY(-3deg) translateY(5px); filter: blur(2px); }
+            100% { opacity: 1; transform: scale(1) rotateY(0) translateY(0); filter: blur(0); }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 950px) {
+            .book-pages-container {
+                grid-template-columns: 100%;
+            }
+            .left-page {
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+                padding: 40px 20px;
+            }
+            .book-wrapper::before {
+                display: none;
+            }
+            .right-page {
+                padding: 40px 25px;
+            }
+            .right-page::after, .left-page::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Ambient Glow Elements -->
+<div class="glow-sphere-1"></div>
+<div class="glow-sphere-2"></div>
+
+<div class="book-wrapper">
+    <div class="book-header">
+        <h1>COMMUNICATIVE ENGLISH E-PORTFOLIO</h1>
+        <p>H.A.G.S SAMPATH — INTAKE 2024 — UWU_ICT_24_074</p>
+    </div>
+
+    <div class="book-pages-container">
+        <!-- Left Page Area -->
+        <div class="left-page" id="leftBookPageCanvas"></div>
+
+        <!-- Right Page Area -->
+        <div class="right-page" id="rightBookPageCanvas"></div>
+    </div>
+
+    <div class="book-footer">
+        <button class="nav-btn" onclick="turnBackPage()">◀ Previous</button>
+        <button class="nav-btn home-btn" onclick="jumpToIndex()">📋 Table of Contents</button>
+        <span id="pageTurnerText">FRONT INDEX</span>
+        <button class="nav-btn" onclick="turnNextPage()">Next ▶</button>
+    </div>
+</div>
+
+<script>
+    const bookDatabase = [
+        {
+            isIndex: true,
+            leftHtml: `
+                <div class="cover-jacket">
+                    <div class="cover-badge">💡 Continuous Assessment 01</div>
+                    <h2>AUDITORY INSIGHTS JOURNAL</h2>
+                    <h4>E-Portfolio Journal</h4>
+                    <div class="cover-university">
+                        <strong>Uva Wellassa University</strong>
+                        Faculty of Technological Studies<br>Academic Year 2026
+                    </div>
+                </div>
+            `,
+            rightHtml: `
+                <h2>📖 Table of Contents</h2>
+                <p class="page-text" style="margin-top:4px; margin-bottom: 18px; font-style:italic; color:#64748b;">Click any review note below to turn to that chapter directly:</p>
+                <ul class="table-of-contents">
+                    <li onclick="flipToChapter(1)"><span>1. Professor Jiang: World War 3 Predictions</span><span class="page-num">pg. 01</span></li>
+                    <li onclick="flipToChapter(2)"><span>2. How to Speak So People Want to Listen</span><span class="page-num">pg. 02</span></li>
+                    <li onclick="flipToChapter(3)"><span>3. The Power of Believing You Can Improve</span><span class="page-num">pg. 03</span></li>
+                    <li onclick="flipToChapter(4)"><span>4. How Great Leaders Inspire Action</span><span class="page-num">pg. 04</span></li>
+                    <li onclick="flipToChapter(5)"><span>5. Your Body Language May Shape Who You Are</span><span class="page-num">pg. 05</span></li>
+                    <li onclick="flipToChapter(6)"><span>6. The No.1 Productivity Expert (Ali Abdaal)</span><span class="page-num">pg. 06</span></li>
+                    <li onclick="flipToChapter(7)"><span>7. The Mental Health Doctor (Dr. Anders Hansen)</span><span class="page-num">pg. 07</span></li>
+                    <li onclick="flipToChapter(8)"><span>8. Former Netflix CEO: Hard Work Does Not Matter</span><span class="page-num">pg. 08</span></li>
+                    <li onclick="flipToChapter(9)"><span>9. Is AI a Good Investment? (BBC Podcast)</span><span class="page-num">pg. 09</span></li>
+                    <li onclick="flipToChapter(10)"><span>10. Origins of the Universe 101 (Nat Geo)</span><span class="page-num">pg. 10</span></li>
+                </ul>
+            `
+        },
+        {
+            imageSrc: "BTJGr78-zyw-HD (1).jpg",
+            imageTitle: "Professor Jiang Interview Thumbnail",
+            title: "1. Professor Jiang: World War 3 Is About To Begin, Let Me Explain!",
+            meta: "<b>Date Accessed:</b> 01 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 7 May 2026",
+            summary: "The interview is hosted by Steven Bartlett and features Professor Jiang. The discussion focuses on current international tensions, global politics, and whether conflicts between major nations could lead to a larger global confrontation. The guest explains historical and political factors that influence relationships among powerful countries and discusses possible future scenarios.",
+            opinion: "I found this interview informative because it presents different viewpoints about international relations and global security. The discussion encouraged me to think critically about world events instead of relying only on headlines. Some predictions are opinions rather than facts, so it is important to compare information from multiple sources.",
+            growth: ["I learnt more about geopolitical tensions and how international relationships affect global stability.", "I understood the importance of analyzing information critically.", "The interview improved my listening skills when dealing with complex topics."],
+            vocab: "<b>Geopolitics</b> - the influence of geography on international politics.<br><b>Diplomacy</b> - managing relations between countries.<br><b>Strategic alliance</b> - an agreement between countries for mutual benefit or security.<br><b>Global stability</b> - a condition where nations coexist peacefully and predictably."
+        },
+        {
+            imageSrc: "eIho2S0ZahI-HD (1).jpg",
+            imageTitle: "Julian Treasure TED Talk Thumbnail",
+            title: "2. How to Speak So That People Want to Listen",
+            meta: "<b>Date Accessed:</b> 02 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 27 Jun 2014",
+            summary: "This TED talk is presented by Julian Treasure, a communication expert who explains how people can improve their speaking skills and make others listen carefully. He discusses common negative speaking habits, such as gossiping, judging, negativity, complaining, excuses, exaggeration, and being overly certain about opinions. He introduces four important principles for effective communication called HAIL: Honesty, Authenticity, Integrity, and Love. He also explains how voice techniques such as tone, pace, and volume can influence the way people understand a message.",
+            opinion: "I think this talk is very useful because communication skills are important in both personal and professional life. The speaker clearly explains that speaking is not only about using correct words but also about how we deliver our ideas. I learnt that good communication requires respect, honesty, and understanding of the listener. This knowledge will help me improve my presentations and conversations.",
+            growth: ["I learnt that the way we speak can affect how people respond to us.", "I understood that active listening and clear communication are important skills.", "I learnt the importance of controlling voice features such as tone, speed, and volume.", "I learned a useful communication method called HAIL."],
+            vocab: "<b>Authenticity</b> - being genuine and showing your true self.<br><b>Integrity</b> - being honest and following strong moral principles.<br><b>Dogmatism</b> - expressing opinions as if they are always correct and refusing to consider other views.<br><b>Empathy</b> - the ability to understand another person's feelings.<br><b>Vocal toolbox</b> - different techniques used to improve the quality of speaking."
+        },
+        {
+            imageSrc: "_X0mgOOSpLU-HD (1).jpg",
+            imageTitle: "Carol Dweck Mindset Thumbnail",
+            title: "3. The Power of Believing That You Can Improve",
+            meta: "<b>Date Accessed:</b> 03 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 17 Dec 2014",
+            summary: "This TED Talk is presented by Professor Carol Dweck, a psychologist and researcher who explains the idea of a growth mindset. She discusses how people's beliefs about their abilities can affect their learning and success. The speaker explains the difference between a fixed mindset, where people believe their abilities cannot change, and a growth mindset, where people believe they can develop their skills through effort, learning, and improvement. The talk also introduces the idea of the word 'yet', showing that failure is not the end but a step in the learning process.",
+            opinion: "I think this talk is very motivating because it changed the way I think about mistakes and challenges. Instead of thinking that failure means we cannot succeed, we should see it as an opportunity to learn and improve. This idea is useful for students because learning requires patience, practice, and continuous effort.",
+            growth: ["I learnt the difference between a fixed mindset and a growth mindset.", "I understood that abilities can improve through dedication and practice.", "I learnt that challenges help us develop new skills.", "I realized that using positive thinking can improve learning and personal development."],
+            vocab: "<b>Growth mindset</b> - the belief that abilities can be developed through effort and learning.<br><b>Fixed mindset</b> - the belief that abilities and intelligence cannot be changed.<br><b>Potential</b> - the ability or possibility to develop and achieve something.<br><b>Persistence</b> - continuing to work toward a goal despite difficulties.<br><b>The power of 'yet'</b> - a phrase showing something can be achieved in the future."
+        },
+        {
+            imageSrc: "qp0HIF3SfI4-HD (1).jpg",
+            imageTitle: "Simon Sinek TED Talk Thumbnail",
+            title: "4. How Great Leaders Inspire Action",
+            meta: "<b>Date Accessed:</b> 04 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 4 May 2010",
+            summary: "In the TED Talk 'How Great Leaders Inspire Action,' Simon Sinek explains why some leaders and organizations are more successful and influential than others. He introduces the concept of the Golden Circle, which consists of three parts: Why, How, and What. According to Sinek, most people and companies start by explaining what they do, but inspiring leaders start with why they do it. He uses examples such as Apple, Martin Luther King Jr., and the Wright brothers to show how a strong sense of purpose can inspire people to take action.",
+            opinion: "I found this TED Talk very interesting and inspiring. Simon Sinek presented his ideas clearly and used real-life examples that made the concept easy to understand. I agree that people are motivated more by purpose and vision than by products or money alone. The talk encouraged me to think about my own goals.",
+            growth: ["The importance of starting with a clear purpose ('Why') before explaining actions.", "Effective leaders inspire people by sharing their beliefs and values.", "Good communication can influence people's decisions and attitudes.", "Having a strong purpose helps increase motivation and confidence.", "Leadership is about inspiring others to believe in a vision."],
+            vocab: "<b>Inspire</b> - to encourage or motivate people to take action.<br><b>Leadership</b> - the ability to guide, influence, and motivate others.<br><b>Vision</b> - a clear idea of what someone wants to achieve in the future.<br><b>Purpose</b> - the reason why something is done or exists.<br><b>Golden Circle</b> - Simon Sinek's model explaining Why, How, and What."
+        },
+        {
+            imageSrc: "Ks-_Mh1QhMc-HD (1).jpg",
+            imageTitle: "Amy Cuddy Body Language Thumbnail",
+            title: "5. Your Body Language May Shape Who You Are",
+            meta: "<b>Date Accessed:</b> 05 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 1 Oct 2012",
+            summary: "In the TED Talk 'Your Body Language May Shape Who You Are,' social psychologist Amy Cuddy explains how body language affects not only how others see us but also how we see ourselves. She introduces the concept of 'power posing,' which involves adopting confident and open body postures. Amy discusses research showing that body language can influence feelings of confidence, stress levels, and performance in challenging situations such as job interviews.",
+            opinion: "I found this TED Talk very inspiring and practical. Amy Cuddy explained the topic in a simple and engaging way, making it easy to understand how body language influences our confidence. I liked that she combined scientific research with personal experiences.",
+            growth: ["Body language affects both how others perceive us and how we feel inside.", "Confident postures can help reduce stress and increase self-confidence.", "Small physical changes can have a positive impact on mindset and behavior.", "Nonverbal communication is just as important as spoken communication."],
+            vocab: "<b>Body language</b> - nonverbal communication expressed through posture and gestures.<br><b>Power pose</b> - a confident, open body posture that increases confidence.<br><b>Confidence</b> - belief in one's abilities and qualities."
+        },
+        {
+            imageSrc: "MsERVcx0Qg8-HD (1).jpg",
+            imageTitle: "Ali Abdaal Interview Thumbnail",
+            title: "6. The No.1 Productivity Expert: 10,000 Hours Is A Lie!",
+            meta: "<b>Date Accessed:</b> 06 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 2 Sept 2024",
+            summary: "In this episode, Steven Bartlett interviews productivity expert Ali Abdaal about common misconceptions regarding success and personal growth. Ali argues that the popular belief that mastery requires 10,000 hours is misunderstood; quality of learning, enjoyment of the process, and consistency are more vital. He also highlights a damaging morning habit: immediately checking phones after waking up, which reduces focus and increases stress.",
+            opinion: "I found this interview extremely insightful and practical. Ali Abdaal presented his ideas in an engaging way. I was particularly interested in his explanation that success depends not only on hard work but also on enjoying the process of learning. I can apply this directly to my university studies.",
+            growth: ["Success is not determined solely by the number of hours spent practicing.", "Enjoying the learning process improves motivation and long-term performance.", "Morning habits have a significant impact on daily productivity.", "Consistency and quality of effort matter more than sheer volume."],
+            vocab: "<b>Productivity</b> - the ability to complete tasks effectively and efficiently.<br><b>Consistency</b> - continuing to do something regularly over time.<br><b>Mastery</b> - achieving a very high level of skill in a particular area.<br><b>Intentional</b> - done with purpose and careful planning."
+        },
+        {
+            imageSrc: "FN0_ow76hU8-HD (1).jpg",
+            imageTitle: "Dr. Anders Hansen Interview Thumbnail",
+            title: "7. The Mental Health Doctor: Your Phone Screen & Sitting Is Destroying Your Brain!",
+            meta: "<b>Date Accessed:</b> 07 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 15 Jan 2024",
+            summary: "Psychiatrist and mental health expert Dr. Anders Hansen discusses the severe effects of modern digital lifestyles on the human brain. Excessive screen time and prolonged sitting negatively impact concentration, memory, and emotional well-being. He states our brains evolved for movement, and emphasizes that regular physical exercise drastically reduces anxiety and enhances cognitive scores.",
+            opinion: "I found this interview very informative and eye-opening. It made me realize how much time we spend on our phones without considering mental health consequences. I agree with Dr. Hansen's view that digital technology must be monitored and balanced carefully with regular active lifestyle breaks.",
+            growth: ["Excessive screen time drastically reduces cognitive focus and memory retention.", "Regular physical activity acts as an excellent mechanism for brain preservation.", "Sitting for long hours is detrimental to both neural health and emotional states.", "Limiting non-essential phone use recovers wasted attention spans."],
+            vocab: "<b>Sedentary</b> - involving a lot of sitting and little physical activity.<br><b>Cognitive performance</b> - the brain's ability to think, learn, and solve problems.<br><b>Screen time</b> - the amount of time spent using electronic devices.<br><b>Well-being</b> - the state of being healthy and comfortable."
+        },
+        {
+            imageSrc: "HSVbD7RhOHU-HD (1).jpg",
+            imageTitle: "Reed Hastings Interview Thumbnail",
+            title: "8. Former Netflix CEO: 'Hard Work Does Not Matter!'",
+            meta: "<b>Date Accessed:</b> 08 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 15 Jan 2024",
+            summary: "Steven Bartlett interviews Reed Hastings, the co-founder and former CEO of Netflix. Reed challenges the convention of hard work alone, highlighting that innovation, corporate adaptability, smart calculated risks, and an excellent culture drive multi-billion dollar scale. He details Netflix's transition from DVD rental to global streaming power by empowering workers with freedom and responsibility.",
+            opinion: "I found this interview very insightful. I was surprised by his bold view that hard work alone isn't enough for extraordinary results. His emphasis on creative team ecosystems and learning fast from failures made me think differently about future entrepreneurship and business objectives.",
+            growth: ["Innovation and strategic adaptability are critical in rapidly evolving economies.", "Learning proactively from business mistakes prevents corporate stagnation.", "A culture built on freedom and high responsibility elevates staff output.", "Calculated risk-taking is non-negotiable for true digital breakthroughs."],
+            vocab: "<b>Adaptability</b> - the ability to adjust to new situations and challenges.<br><b>Calculated risk</b> - a carefully considered action that weighs benefits against dangers.<br><b>Company culture</b> - the shared values and behaviors that shape an organization.<br><b>Empower</b> - to give someone confidence and authority to take action."
+        },
+        {
+            imageSrc: "uuVRpTde6cY-HD (1).jpg",
+            imageTitle: "BBC Global News Podcast Thumbnail",
+            title: "9. Is AI a Good Investment? | Global News Podcast",
+            meta: "<b>Date Accessed:</b> 09 June 2026 | <b>Source:</b> BBC News Podcast | <b>Published:</b> 10 Jun 2026",
+            summary: "This podcast explores whether Artificial Intelligence (AI) holds long-term investment value for societies and economies. While speakers map benefits like rapid productivity boosts, they raise strong warning signs about speculative financial market bubbles, astronomical development costs, potential job displacement, and highly unpredictable corporate profit timelines.",
+            opinion: "I found this podcast very timely and objective. It avoids basic hype to show realistic financial angles. I agree that AI possesses industry-changing potential, but investors and computer scientists must exercise caution, conducting thorough research rather than chasing trendy waves blindly.",
+            growth: ["AI technology scales corporate efficiency but carries heavy capital risks.", "Not all sudden tech hypes materialize into continuous financial growth.", "Market speculation can overvalue tools past their true functional capabilities.", "Sustainable technology development demands robust risk-mitigation plans."],
+            vocab: "<b>Investment</b> - putting money into an asset with the expectation of future profit.<br><b>Market speculation</b> - investing based on predictions of future price shifts.<br><b>Investment bubble</b> - a situation where asset prices soar far past real intrinsic value.<br><b>Risk</b> - the possibility of loss or negative outcomes."
+        },
+        {
+            imageSrc: "HdPzOWlLrbE-HD (1).jpg",
+            imageTitle: "National Geographic Universe Thumbnail",
+            title: "10. Origins of the Universe 101",
+            meta: "<b>Date Accessed:</b> 10 June 2026 | <b>Source:</b> National Geographic | <b>Published:</b> 1 Mar 2018",
+            summary: "In this documentary short, National Geographic explains the foundational physics of how our universe began and developed across 13.8 billion years. It maps the initial Big Bang explosion, rapid cosmic expansion, cooling phases, and the subsequent formation of stars, galaxies, and planets under cosmic forces like gravity, dark matter, and dark energy.",
+            opinion: "I found this video completely fascinating. The animations made complex astrophysics remarkably clear and visually accessible. It triggered my curiosity regarding astronomy and space discoveries, showcasing how much mysterious territory remains for modern scientists to solve.",
+            growth: ["The universe emerged 13.8 billion years ago from an infinitely dense point.", "Cosmic expansion has continued uninterrupted since the initial creation event.", "Gravity dictates the structural alignment of major galaxies and stellar bodies.", "Dark matter and dark energy represent vital fields of active scientific research."],
+            vocab: "<b>Big Bang Theory</b> - the scientific theory that the universe began from a hot, dense state.<br><b>Galaxy</b> - a massive collection of stars, gas, and planets held by gravity.<br><b>Cosmic Expansion</b> - the process of the universe continuously growing larger.<br><b>Astronomy</b> - the scientific study of outer space and celestial bodies."
+        }
+    ];
+
+    let activeChapterIndex = 0;
+
+    function renderBookPage(idx) {
+        const leftCanvas = document.getElementById("leftBookPageCanvas");
+        const rightCanvas = document.getElementById("rightBookPageCanvas");
+        const turnerLabel = document.getElementById("pageTurnerText");
+
+        leftCanvas.classList.remove("fade-page");
+        rightCanvas.classList.remove("fade-page");
+        void leftCanvas.offsetWidth; 
+        leftCanvas.classList.add("fade-page");
+        rightCanvas.classList.add("fade-page");
+
+        const node = bookDatabase[idx];
+
+        if (node.isIndex) {
+            leftCanvas.innerHTML = node.leftHtml;
+            rightCanvas.innerHTML = node.rightHtml;
+            turnerLabel.innerText = "FRONT INDEX";
+        } else {
+            leftCanvas.innerHTML = `
+                <div class="photo-card-holder">
+                    <img src="${node.imageSrc}" class="photo-img" alt="${node.imageTitle}">
+                    <div class="media-source-title">${node.imageTitle}</div>
+                </div>
+                <div class="vocab-box" style="width: 100%; max-width: 420px;">
+                    <p style="font-weight:800; text-transform:uppercase; font-size:11.5px; letter-spacing:1px; border-bottom: 1px solid #d1fae5; padding-bottom:8px; margin-bottom:12px; color:#042f2e;">📚 Vocabulary Insights</p>
+                    <p>${node.vocab}</p>
+                </div>
+            `;
+
+            let growthItemsHtml = "";
+            node.growth.forEach(item => {
+                growthItemsHtml += `<li>${item}</li>`;
+            });
+
+            rightCanvas.innerHTML = `
+                <h2>${node.title}</h2>
+                <div class="page-meta-tags">${node.meta}</div>
+                
+                <div class="section-title">Summary</div>
+                <p class="page-text">${node.summary}</p>
+                
+                <div class="section-title">My Personal Opinion</div>
+                <p class="page-text">${node.opinion}</p>
+                
+                <div class="section-title">Reflective Growth — Key Takeaways</div>
+                <ul class="bullet-list">
+                    ${growthItemsHtml}
+                </ul>
+            `;
+            turnerLabel.innerText = `CHAPTER: ${idx.toString().padStart(2, '0')} / 10`;
+        }
+
+        rightCanvas.scrollTop = 0;
+    }
+
+    function turnNextPage() {
+        if (activeChapterIndex < bookDatabase.length - 1) activeChapterIndex++;
+        else activeChapterIndex = 0; 
+        renderBookPage(activeChapterIndex);
+    }
+
+    function turnBackPage() {
+        if (activeChapterIndex > 0) activeChapterIndex--;
+        else activeChapterIndex = bookDatabase.length - 1; 
+        renderBookPage(activeChapterIndex);
+    }
+
+    function jumpToIndex() {
+        activeChapterIndex = 0;
+        renderBookPage(activeChapterIndex);
+    }
+
+    function flipToChapter(chapterIdx) {
+        if (chapterIdx >= 0 && chapterIdx < bookDatabase.length) {
+            activeChapterIndex = chapterIdx;
+            renderBookPage(activeChapterIndex);
+        }
+    }
+
+    window.onload = function() {
+        renderBookPage(0);
+    };
+</script>
+
+</body>
+</html>
