@@ -236,11 +236,22 @@
             border-radius: 18px;
             box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.05);
             margin-bottom: 25px;
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+            position: relative;
         }
 
         .photo-card-holder:hover {
             transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 20px 45px rgba(16, 185, 129, 0.18);
+        }
+
+        /* Image Wrapper with Play Button Overlays */
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            width: 100%;
         }
 
         .photo-img {
@@ -250,6 +261,60 @@
             object-fit: cover;
             border-radius: 12px;
             display: block;
+            transition: filter 0.3s ease, transform 0.3s ease;
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 12px;
+        }
+
+        .play-btn-circle {
+            width: 56px;
+            height: 56px;
+            background: var(--accent-emerald);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            transform: scale(0.7);
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .play-icon {
+            color: #ffffff;
+            font-size: 18px;
+            margin-left: 4px; /* Perfectly centers the triangle icon */
+        }
+
+        /* Video Interactive Hover Effects */
+        .photo-card-holder:hover .play-overlay {
+            opacity: 1;
+        }
+
+        .photo-card-holder:hover .play-btn-circle {
+            transform: scale(1);
+            animation: playPulseGlow 1.8s infinite;
+        }
+
+        .photo-card-holder:hover .photo-img {
+            filter: brightness(0.8);
+            transform: scale(1.02);
+        }
+
+        /* Pulse Waves Animation */
+        @keyframes playPulseGlow {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            70% { box-shadow: 0 0 0 16px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         .media-source-title {
@@ -489,7 +554,7 @@
 <div class="book-wrapper">
     <div class="book-header">
         <h1>COMMUNICATIVE ENGLISH E-PORTFOLIO</h1>
-        <p>H.A.G.S SAMPATH — INTAKE 2024 — UWU_ICT_24_074</p>
+        <p>H.A.G.S/SAMPATH — INTAKE 2024 — UWU_ICT_24_074</p>
     </div>
 
     <div class="book-pages-container">
@@ -542,6 +607,7 @@
         },
         {
             imageSrc: "BTJGr78-zyw-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=BTJGr78-zyw",
             imageTitle: "Professor Jiang Interview Thumbnail",
             title: "1. Professor Jiang: World War 3 Is About To Begin, Let Me Explain!",
             meta: "<b>Date Accessed:</b> 01 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 7 May 2026",
@@ -552,6 +618,7 @@
         },
         {
             imageSrc: "eIho2S0ZahI-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=eIho2S0ZahI",
             imageTitle: "Julian Treasure TED Talk Thumbnail",
             title: "2. How to Speak So That People Want to Listen",
             meta: "<b>Date Accessed:</b> 02 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 27 Jun 2014",
@@ -562,6 +629,7 @@
         },
         {
             imageSrc: "one.jpg",
+            videoUrl: "https://www.youtube.com/watch?v=_X0mgOOSpLU",
             imageTitle: "Carol Dweck Mindset Thumbnail",
             title: "3. The Power of Believing That You Can Improve",
             meta: "<b>Date Accessed:</b> 03 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 17 Dec 2014",
@@ -572,6 +640,7 @@
         },
         {
             imageSrc: "qp0HIF3SfI4-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=qp0HIF3SfI4",
             imageTitle: "Simon Sinek TED Talk Thumbnail",
             title: "4. How Great Leaders Inspire Action",
             meta: "<b>Date Accessed:</b> 04 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 4 May 2010",
@@ -582,6 +651,7 @@
         },
         {
             imageSrc: "Ks-_Mh1QhMc-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=Ks-_Mh1QhMc",
             imageTitle: "Amy Cuddy Body Language Thumbnail",
             title: "5. Your Body Language May Shape Who You Are",
             meta: "<b>Date Accessed:</b> 05 June 2026 | <b>Source:</b> TED Talks | <b>Published:</b> 1 Oct 2012",
@@ -592,6 +662,7 @@
         },
         {
             imageSrc: "MsERVcx0Qg8-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=MsERVcx0Qg8",
             imageTitle: "Ali Abdaal Interview Thumbnail",
             title: "6. The No.1 Productivity Expert: 10,000 Hours Is A Lie!",
             meta: "<b>Date Accessed:</b> 06 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 2 Sept 2024",
@@ -602,6 +673,7 @@
         },
         {
             imageSrc: "FN0_ow76hU8-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=FN0_ow76hU8",
             imageTitle: "Dr. Anders Hansen Interview Thumbnail",
             title: "7. The Mental Health Doctor: Your Phone Screen & Sitting Is Destroying Your Brain!",
             meta: "<b>Date Accessed:</b> 07 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 15 Jan 2024",
@@ -612,6 +684,7 @@
         },
         {
             imageSrc: "HSVbD7RhOHU-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=HSVbD7RhOHU",
             imageTitle: "Reed Hastings Interview Thumbnail",
             title: "8. Former Netflix CEO: 'Hard Work Does Not Matter!'",
             meta: "<b>Date Accessed:</b> 08 June 2026 | <b>Source:</b> The Diary Of A CEO | <b>Published:</b> 15 Jan 2024",
@@ -622,6 +695,7 @@
         },
         {
             imageSrc: "uuVRpTde6cY-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=uuVRpTde6cY",
             imageTitle: "BBC Global News Podcast Thumbnail",
             title: "9. Is AI a Good Investment? | Global News Podcast",
             meta: "<b>Date Accessed:</b> 09 June 2026 | <b>Source:</b> BBC News Podcast | <b>Published:</b> 10 Jun 2026",
@@ -632,6 +706,7 @@
         },
         {
             imageSrc: "HdPzOWlLrbE-HD (1).jpg",
+            videoUrl: "https://www.youtube.com/watch?v=HdPzOWlLrbE",
             imageTitle: "National Geographic Universe Thumbnail",
             title: "10. Origins of the Universe 101",
             meta: "<b>Date Accessed:</b> 10 June 2026 | <b>Source:</b> National Geographic | <b>Published:</b> 1 Mar 2018",
@@ -663,9 +738,16 @@
             turnerLabel.innerText = "FRONT INDEX";
         } else {
             leftCanvas.innerHTML = `
-                <div class="photo-card-holder">
-                    <img src="${node.imageSrc}" class="photo-img" alt="${node.imageTitle}">
-                    <div class="media-source-title">${node.imageTitle}</div>
+                <div class="photo-card-holder" onclick="window.open('${node.videoUrl}', '_blank')" title="Click to watch video on YouTube">
+                    <div class="img-wrapper">
+                        <img src="${node.imageSrc}" class="photo-img" alt="${node.imageTitle}">
+                        <div class="play-overlay">
+                            <div class="play-btn-circle">
+                                <span class="play-icon">▶</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="media-source-title">${node.imageTitle} 🔴</div>
                 </div>
                 <div class="vocab-box" style="width: 100%; max-width: 420px;">
                     <p style="font-weight:800; text-transform:uppercase; font-size:11.5px; letter-spacing:1px; border-bottom: 1px solid #d1fae5; padding-bottom:8px; margin-bottom:12px; color:#042f2e;">📚 Vocabulary Insights</p>
